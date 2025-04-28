@@ -1,0 +1,9 @@
+pandas
+xlrd
+openpyxl
+streamlit
+firebase-admin
+PyJWT
+pyrebase4
+plotly
+
