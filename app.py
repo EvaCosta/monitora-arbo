@@ -61,10 +61,11 @@ def processamento(user_email):
                     f.write(uploaded_file.getbuffer())
 
             try:
-                df_ve, df_va = processar_arquivos(pasta_temp)
+                df_ve, df_va, df_casos_sem_encerramento = processar_arquivos(pasta_temp)
 
                 df_ve.to_excel(os.path.join(pasta_dados, "chico_filtrado_ve.xlsx"), index=False, engine='openpyxl')
                 df_va.to_excel(os.path.join(pasta_dados, "chico_filtrado_va.xlsx"), index=False, engine='openpyxl')
+                df_casos_sem_encerramento.to_excel(os.path.join(pasta_dados, "casos_sem_encerramento.xlsx"), index=False, engine='openpyxl')
 
                 st.success("Arquivos processados e salvos com sucesso!")
             except Exception as e:
