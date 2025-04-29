@@ -94,10 +94,12 @@ def processar_arquivos(pasta):
     for col in colunas_data:
         df[col] = df[col].dt.strftime('%d/%m/%Y')
 
+    # Filtra os casos onde a coluna 'DT_ENCERRA' está vazia (nula)
+    casos_sem_encerramento = df[df['DT_ENCERRA'].isna()]
 
 
     # 11. Salvar o resultado final 
     # df_ve.to_excel('chico_filtrado_ve.xlsx', index=False, engine='openpyxl')
     # df_va.to_excel('chico_filtrado_va.xlsx', index=False, engine='openpyxl')
 
-    return df_ve, df_va
+    return df_ve, df_va, casos_sem_encerramento
