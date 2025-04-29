@@ -80,10 +80,12 @@ def processamento(user_email):
         st.subheader("🦠 Casos dos últimos 60 dias (VE)")
         st.dataframe(df_ve)
         download_dataframe(df_va, "chico_filtrado_ve.csv", "Download VE")
+
         if 'OPORTUNIDADE_SINAN' in df_va.columns:
             st.subheader("📈 Oportunidades SINAN - VE")
             fig = px.bar(df_va, x=df_va.columns[0], y='OPORTUNIDADE_SINAN', title="Gráfico de Oportunidades SINAN - VE")
             st.plotly_chart(fig, use_container_width=True)
+
     elif user_email == "vigilanciaambientalds7@gmail.com":
         st.subheader("🦠 Casos dos Últimos 30 Dias (VA)")
         st.dataframe(df_va)
@@ -98,6 +100,9 @@ def processamento(user_email):
         st.subheader("🦠 Casos dos Últimos 30 Dias")
         st.dataframe(df_va)
         download_dataframe(df_va, "chico_filtrado_va.csv", "Download VA")
+        st.subheader("🦠 Casos sem encerramento")
+        st.dataframe(df_casos_sem_encerramento)
+        download_dataframe(df_casos_sem_encerramento, "casos_sem_encerramento.csv", "Casos sem encerramento")
 
 # Função de painel admin (se precisar de um painel de admin)
 def admin_panel():
