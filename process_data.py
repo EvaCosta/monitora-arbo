@@ -6,10 +6,10 @@ from datetime import datetime
 
 def processar_arquivos(pasta):
     # 1. Localizar todos os arquivos .xls na pasta 'arquivos/'
-    arquivos_xls = [os.path.join(pasta, f) for f in os.listdir(pasta) if f.endswith(".xls", ".ods")]
+    arquivos_xls = [os.path.join(pasta, f) for f in os.listdir(pasta) if f.endswith(".xls")]
 
     if not arquivos_xls:
-        raise ValueError("Nenhum arquivo .xls ou .ods encontrado na pasta.")
+        raise ValueError("Nenhum arquivo .xls encontrado na pasta.")
 
     # 2. Lista para armazenar DataFrames
     dfs = []
@@ -18,21 +18,14 @@ def processar_arquivos(pasta):
     for caminho in arquivos_xls:
         print(f"Lendo: {caminho}")
         try:
-            # df = pd.read_excel(caminho, engine='xlrd')
+            df = pd.read_excel(caminho, engine='xlrd')
 
             # # 4. Imprimir os nomes das colunas para depuração
             # print("Colunas no dataset:")
             # print(df.columns.tolist())
 
             # 5. Limpar os nomes das colunas: manter só o nome antes da vírgula
-            extensao = os.path.splitext(caminho)[1].lower()
-
-            if extensao == ".xls":
-                df = pd.read_excel(caminho, engine="xlrd")
-            elif extensao == ".ods":
-                df = pd.read_excel(caminho, engine="odf")
-                print(df)
-            
+            df = pd.read_excel(caminho, engine='xlrd')  # Ou use 'openpyxl' se for .xlsx
             df.columns = df.columns.str.split(',').str[0]
 
             # 6. Selecionar as colunas relevantes para análise
@@ -52,8 +45,8 @@ def processar_arquivos(pasta):
 
         except Exception as e:
             print(f"Erro ao ler {caminho}: {e}")
-    # 7. Concatenar todos os DataFrames
-    df = pd.concat(dfs, ignore_index=True)
+            # 7. Concatenar todos os DataFrames
+            df = pd.concat(dfs, ignore_index=True)
 
     if not dfs:
         raise ValueError("Nenhum arquivo pôde ser processado com sucesso.")

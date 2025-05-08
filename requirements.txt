@@ -4,5 +4,4 @@ openpyxl
 streamlit
 PyJWT
 plotly
-odfpy
 

@@ -48,7 +48,7 @@ def processamento(user_email):
             st.error(f"Arquivo de dados não foi gerado pelo administrador.")
             return
     else:
-        uploaded_files = st.file_uploader("Envie um ou mais arquivos .xls ou .ods", type=["xls", "ods"], accept_multiple_files=True)
+        uploaded_files = st.file_uploader("Envie um ou mais arquivos .xls", type=["xls"], accept_multiple_files=True)
 
         if uploaded_files:
             pasta_temp = "temp_upload"
