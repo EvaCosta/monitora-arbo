@@ -52,8 +52,8 @@ def processar_arquivos(pasta):
 
         except Exception as e:
             print(f"Erro ao ler {caminho}: {e}")
-            # 7. Concatenar todos os DataFrames
-            df = pd.concat(dfs, ignore_index=True)
+    # 7. Concatenar todos os DataFrames
+    df = pd.concat(dfs, ignore_index=True)
 
     if not dfs:
         raise ValueError("Nenhum arquivo pôde ser processado com sucesso.")
