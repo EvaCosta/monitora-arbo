@@ -79,7 +79,7 @@ def processamento(user_email):
     if user_email == "vigilanciaepidemiologicadsvii@gmail.com":
         st.subheader("🦠 Casos dos últimos 60 dias (VE)")
         st.dataframe(df_ve)
-        download_dataframe(df_va, "chico_filtrado_ve.ods", "Download VE")
+        download_dataframe(df_va, "chico_filtrado_ve.csv", "Download VE")
 
         if 'OPORTUNIDADE_SINAN' in df_va.columns:
             st.subheader("📈 Oportunidades SINAN - VE")
@@ -89,17 +89,17 @@ def processamento(user_email):
     elif user_email == "vigilanciaambientalds7@gmail.com":
         st.subheader("🦠 Casos dos Últimos 30 Dias (VA)")
         st.dataframe(df_va)
-        download_dataframe(df_va, "chico_filtrado_va.ods", "Download VA")
+        download_dataframe(df_va, "chico_filtrado_va.csv", "Download VA")
         if 'OPORTUNIDADE_SINAN' in df_va.columns:
             fig = px.bar(df_va, x=df_va.columns[0], y='OPORTUNIDADE_SINAN', title="Oportunidades SINAN - VA")
             st.plotly_chart(fig, use_container_width=True)
     else:
         st.subheader("🦠 Casos dos Últimos 60 Dias")
         st.dataframe(df_ve)
-        download_dataframe(df_ve, "chico_filtrado_ve.ods", "Download VE")
+        download_dataframe(df_ve, "chico_filtrado_ve.csv", "Download VE")
         st.subheader("🦠 Casos dos Últimos 30 Dias")
         st.dataframe(df_va)
-        download_dataframe(df_va, "chico_filtrado_va.ods", "Download VA")
+        download_dataframe(df_va, "chico_filtrado_va.csv", "Download VA")
         st.subheader("🦠 Casos sem encerramento")
         st.dataframe(df_casos_sem_encerramento)
         download_dataframe(df_casos_sem_encerramento, "casos_sem_encerramento.ods", "Casos sem encerramento")
