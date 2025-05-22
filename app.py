@@ -96,10 +96,10 @@ def processamento(user_email):
     else:
         st.subheader("🦠 Casos dos Últimos 60 Dias")
         st.dataframe(df_ve)
-        download_dataframe(df_ve, "chico_filtrado_ve.dbf", "Download VE")
+        download_dataframe(df_ve, "chico_filtrado_ve.csv", "Download VE")
         st.subheader("🦠 Casos dos Últimos 30 Dias")
         st.dataframe(df_va)
-        download_dataframe(df_va, "chico_filtrado_va.dbf", "Download VA")
+        download_dataframe(df_va, "chico_filtrado_va.csv", "Download VA")
         st.subheader("🦠 Casos sem encerramento")
         st.dataframe(df_casos_sem_encerramento)
         download_dataframe(df_casos_sem_encerramento, "casos_sem_encerramento.csv", "Casos sem encerramento")
